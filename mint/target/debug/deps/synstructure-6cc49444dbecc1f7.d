@@ -1,0 +1,8 @@
+/Users/gaylonalfano/Code/solana-nfts-raw/mint/target/debug/deps/synstructure-6cc49444dbecc1f7.rmeta: /Users/gaylonalfano/.cargo/registry/src/github.com-1ecc6299db9ec823/synstructure-0.12.6/src/lib.rs /Users/gaylonalfano/.cargo/registry/src/github.com-1ecc6299db9ec823/synstructure-0.12.6/src/macros.rs
+
+/Users/gaylonalfano/Code/solana-nfts-raw/mint/target/debug/deps/libsynstructure-6cc49444dbecc1f7.rlib: /Users/gaylonalfano/.cargo/registry/src/github.com-1ecc6299db9ec823/synstructure-0.12.6/src/lib.rs /Users/gaylonalfano/.cargo/registry/src/github.com-1ecc6299db9ec823/synstructure-0.12.6/src/macros.rs
+
+/Users/gaylonalfano/Code/solana-nfts-raw/mint/target/debug/deps/synstructure-6cc49444dbecc1f7.d: /Users/gaylonalfano/.cargo/registry/src/github.com-1ecc6299db9ec823/synstructure-0.12.6/src/lib.rs /Users/gaylonalfano/.cargo/registry/src/github.com-1ecc6299db9ec823/synstructure-0.12.6/src/macros.rs
+
+/Users/gaylonalfano/.cargo/registry/src/github.com-1ecc6299db9ec823/synstructure-0.12.6/src/lib.rs:
+/Users/gaylonalfano/.cargo/registry/src/github.com-1ecc6299db9ec823/synstructure-0.12.6/src/macros.rs:
