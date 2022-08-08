@@ -5,3 +5,5 @@ mint/target/
 test-ledger
 /test-ledger
 test-ledger/
+node_modules/
+mint/target/debug/
