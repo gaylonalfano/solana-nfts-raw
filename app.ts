@@ -33,7 +33,8 @@ const CONFIG_FILE_PATH = path.resolve(
 
 async function main() {
   const connection = new Connection(
-    "https://api.devnet.solana.com",
+    // "https://api.devnet.solana.com",
+    "http://localhost:8899",
     "confirmed"
   );
   console.log("Successfully connected to Solana dev net");
