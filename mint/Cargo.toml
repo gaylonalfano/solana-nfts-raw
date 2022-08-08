@@ -8,8 +8,8 @@ edition = "2021"
 
 [dependencies]
 solana-program = "1.11.4"
-spl-token-2022 = "0.4.2"
-# spl-token = { version = "3.3.0", features = ["no-entrypoint"]}
+# spl-token-2022 = "0.4.2"
+spl-token = { version = "3.3.0", features = ["no-entrypoint"]}
 spl-associated-token-account = { version = "1.0.5", features = ["no-entrypoint"]}
 # ERROR with getrandom package when building with cargo build-bpf
 # https://users.rust-lang.org/t/use-of-undeclared-crate-or-module-imp-on-getrandom-0-2-3-when-building-for-wasm32-unknown-unknown/70171

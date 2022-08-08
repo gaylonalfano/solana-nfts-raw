@@ -44,14 +44,19 @@ async function main() {
   console.log("Local account (wallet) loaded successfully");
 
   const programKeypair = await createKeypairFromFile(
-    path.join(path.resolve(__dirname, "./dist/program"), "mint-keypair.json")
+    path.join(
+      path.resolve(__dirname, "./mint/target/deploy/"),
+      "mint-keypair.json"
+    )
   );
   const programId = programKeypair.publicKey;
   console.log(`Program ID: ${programId.toBase58()}`);
 
   // 1. Derive the mint address of NFT and associated token account address
-  // NOTE We just derive the account addresses on the Client-side, and then
+  // IMPORTANT: We just derive the account addresses on the Client-side, and then
   // let our program take care of creating the actual accounts
+  // NOTE: The Keypair.generate() is so we can pass the mintKeypair.publicKey
+  // to the SystemProgram, which will create the account to house the Mint
   const mintKeypair: Keypair = Keypair.generate(); // A new unique keypair
   const tokenAddress = await getAssociatedTokenAddress(
     mintKeypair.publicKey,
@@ -106,8 +111,8 @@ async function main() {
         isWritable: false,
       },
     ],
-    programId: programId,
-    data: Buffer.alloc(0),
+    programId: programId, // Our own Program
+    data: Buffer.alloc(0), // Instruction Data
   });
 
   // 3. Send and confirm the transaction
