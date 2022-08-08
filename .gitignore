@@ -2,6 +2,8 @@ mint/target/
 ./mint/target
 ./mint/Cargo.lock
 ./node_modules
+./test-ledger/
+./test-ledger
 test-ledger
 /test-ledger
 test-ledger/
