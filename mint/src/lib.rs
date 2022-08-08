@@ -10,7 +10,7 @@ use {
         system_instruction
     },
     spl_token::instruction as token_instruction,
-    spl_associated_token_account::instruction as token_account_instruction,
+    spl_associated_token_account::instruction as associated_token_account_instruction,
 };
 
 entrypoint!(process_instruction);
@@ -37,6 +37,7 @@ fn process_instruction(
     // NOTE Hits another program by sending accounts and doing stuff
     // Q: Is this the spl-token create-account <TOKEN_ADDRESS> command?
     invoke(
+        // Instruction
         &system_instruction::create_account(
             &mint_authority.key, // Our wallet. We're the signer and payer for the tx
             &mint.key,
@@ -44,6 +45,7 @@ fn process_instruction(
             82, // Standard mint space size
             &token_program.key // Owner. SPL Token Program owns the mint
         ),
+        // AccountInfo
         &[
             mint.clone(), // Clone so ownership isn't moved into each tx
             mint_authority.clone(),
@@ -79,11 +81,13 @@ fn process_instruction(
     msg!("3. Creating token account for the mint and the wallet...");
     msg!("Token Address: {}", token_account.key);
     invoke(
-        &token_account_instruction::create_associated_token_account(
+        // Instruction
+        &associated_token_account_instruction::create_associated_token_account(
             &mint_authority.key,
             &mint_authority.key,
             &mint.key,
         ),
+        // AccountInfo
         &[
             mint.clone(),
             token_account.clone(),
@@ -93,13 +97,13 @@ fn process_instruction(
         ]
     )?;
 
-     
-
     // Q: Is this spl-token mint <TOKEN_ADDRESS> <AMOUNT> <RECIPIENT_ADDRESS>?
+    // A: Yes, this seems right...
     msg!("4. Minting token to the token account (i.e. give it 1 for NFT)...");
     msg!("Mint: {}", mint.key);
     msg!("Token Address: {}", token_account.key);
     invoke(
+        // Instruction
         &token_instruction::mint_to(
             &token_program.key,
             &mint.key,
@@ -108,6 +112,7 @@ fn process_instruction(
             &[&mint_authority.key],
             1, // Amount of new tokens to mint
         )?,
+        // AccountInfo
         &[
             mint.clone(),
             mint_authority.clone(),

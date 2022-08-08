@@ -59,7 +59,7 @@ async function main() {
   );
   console.log(`New token: ${mintKeypair.publicKey}`);
 
-  // 2. Transact with our program
+  // 2. Transact with the process_instruction() fn in our on-chain program
   // NOTE All accounts need to be in correct order!
   const instruction = new TransactionInstruction({
     keys: [
