@@ -155,8 +155,8 @@ fn process_instruction(
 
 
     msg!("5. Token mint process completed successfully.");
-    msg!("Final Mint Account: {:?}", mint);
-    msg!("Final Token Account: {:?}", token_account);
+    // msg!("Final Mint Account: {:?}", mint);
+    // msg!("Final Token Account: {:?}", token_account);
     
     Ok(())
 }

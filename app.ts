@@ -13,6 +13,7 @@ import {
   PublicKey,
   SystemProgram,
   SYSVAR_RENT_PUBKEY,
+  LAMPORTS_PER_SOL,
   TransactionInstruction,
   Transaction,
   sendAndConfirmTransaction,
@@ -33,18 +34,21 @@ const CONFIG_FILE_PATH = path.resolve(
   "config.yml"
 );
 
+const ENDPOINT_URL = "https://api.devnet.solana.com"; // Or, "http://localhost:8899"
+
 async function main() {
-  const connection = new Connection(
-    // "https://api.devnet.solana.com",
-    "http://localhost:8899",
-    "confirmed"
-  );
+  const connection = new Connection(ENDPOINT_URL, "confirmed");
   console.log("Successfully connected to Solana dev net");
 
   const configYml = await fs.readFile(CONFIG_FILE_PATH, { encoding: "utf8" });
   const keypairPath = await yaml.parse(configYml).keypair_path;
   const wallet = await createKeypairFromFile(keypairPath);
   console.log("Local account (wallet) loaded successfully");
+
+  // NOTE TESTING ONLY: Airdrop wallet some SOL to deploy and mint to Token Account
+  await connection.confirmTransaction(
+    await connection.requestAirdrop(wallet.publicKey, LAMPORTS_PER_SOL)
+  );
 
   const programKeypair = await createKeypairFromFile(
     path.join(
