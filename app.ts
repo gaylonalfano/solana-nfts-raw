@@ -1,3 +1,5 @@
+// NOTE The Solana Cookbook has a fantastic guide that uses custom and built-in methods:
+// https://solanacookbook.com/references/token.html#how-to-create-a-new-token
 // Our Client
 import * as BufferLayout from "@solana/buffer-layout";
 import {
